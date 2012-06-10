@@ -1,0 +1,522 @@
+if (dashf_timer>=0)
+{dashf_timer+=1;
+ dashf_timer_running=true;}
+if (dashf_timer>11)
+{dashf_timer=-1;
+ dashf_timer_running=false;
+ dashfcheck=0;}
+if (dashb_timer>=0)
+{dashb_timer+=1;
+ dashb_timer_running=true;}
+if (dashb_timer>11)
+{dashb_timer=-1;
+ dashb_timer_running=false;
+ dashbcheck=0;}
+if (qcf_timer>=0)
+{qcf_timer+=1;
+ qcf_timer_running=true;}
+if (qcf_timer>10)
+{qcf_timer=-1;
+ qcf_timer_running=false;
+ special1check=0;}
+if (qcb_timer>=0)
+{qcb_timer+=1;
+ qcb_timer_running=true;}
+if (qcb_timer>10)
+{qcb_timer=-1;
+ qcb_timer_running=false;
+ special2check=0;}
+if (dpf_timer>=0)
+{dpf_timer+=1;
+ dpf_timer_running=true;}
+if (dpf_timer>10)
+{dpf_timer=-1;
+ dpf_timer_running=false;
+ special3check=0;}
+if (dpb_timer>=0)
+{dpb_timer+=1;
+ dpb_timer_running=true;}
+if (dpb_timer>10)
+{dpb_timer=-1;
+ dpb_timer_running=false;
+ special4check=0;}
+if (hcf_timer>=0)
+{hcf_timer+=1;
+ hcf_timer_running=true;}
+if (hcf_timer>15)
+{hcf_timer=-1;
+ hcf_timer_running=false;
+ special5check=0;}
+if (hcb_timer>=0)
+{hcb_timer+=1;
+ hcb_timer_running=true;}
+if (hcb_timer>15)
+{hcb_timer=-1;
+ hcb_timer_running=false;
+ special6check=0;}
+//Use this for forward dashes.
+if (keyboard_check_pressed(ord('D')) && face=1)
+{dashf_timer=0;}
+if (keyboard_check(ord('S')))
+{dashf_timer=-1;
+ dashf_timer_running=false;
+ dashfcheck=0;}
+if (dashf_timer_running=true && face=1)
+{
+    switch(dashfcheck)
+    {
+        case 0:
+                if (keyboard_check(ord('D')))
+                {
+                    dashfcheck+=1;
+                }
+                break;
+        case 1:
+                if (keyboard_check_released(ord('D')))
+                {
+                    dashfcheck+=1;
+                }
+    }
+}
+if (keyboard_check_pressed(ord('A')) && face=-1)
+{dashf_timer=0;}
+if (keyboard_check(ord('S')))
+{dashf_timer=-1;
+ dashf_timer_running=false;
+ dashfcheck=0;}
+if (dashf_timer_running=true && face=-1)
+{
+    switch(dashfcheck)
+    {
+        case 0:
+                if (keyboard_check(ord('A')))
+                {
+                    dashfcheck+=1;
+                }
+                break;
+        case 1:
+                if (keyboard_check_released(ord('A')))
+                {
+                    dashfcheck+=1;
+                }
+    }
+}
+//Use this for backward dashes.
+if (keyboard_check_pressed(ord('D')) && face=-1)
+{dashb_timer=0;}
+if (keyboard_check(ord('S')))
+{dashb_timer=-1;
+ dashb_timer_running=false;
+ dashbcheck=0;}
+if (dashb_timer_running=true && face=-1)
+{
+    switch(dashbcheck)
+    {
+        case 0:
+                if (keyboard_check(ord('D')))
+                {
+                    dashbcheck+=1;
+                }
+                break;
+        case 1:
+                if (keyboard_check_released(ord('D')))
+                {
+                    dashbcheck+=1;
+                }
+    }
+}
+if (keyboard_check_pressed(ord('A')) && face=1)
+{dashb_timer=0;}
+if (keyboard_check(ord('S')))
+{dashb_timer=-1;
+ dashb_timer_running=false;
+ dashbcheck=0;}
+if (dashb_timer_running=true && face=1)
+{
+    switch(dashbcheck)
+    {
+        case 0:
+                if (keyboard_check(ord('A')))
+                {
+                    dashbcheck+=1;
+                }
+                break;
+        case 1:
+                if (keyboard_check_released(ord('A')))
+                {
+                    dashbcheck+=1;
+                }
+    }
+}
+//Use this for quarter-circle forward motions (a.k.a hadoken motions).
+if (keyboard_check(ord('S')))
+{if (special1check=0)
+ {qcf_timer=0;}}
+if (qcf_timer_running=true && face=1)
+{
+    switch(special1check)
+    {
+        case 0:
+                if (keyboard_check(ord('S')))
+                {
+                    special1check+=1;
+                }
+                break;
+        case 1:
+                if (keyboard_check(ord('S')) && keyboard_check(ord('D')))
+                {
+                    special1check+=1;
+                }
+                break;
+        case 2:
+                if (keyboard_check(ord('D')) && !keyboard_check(ord('S')))
+                {
+                    special1check+=1;
+                }
+                break;
+    }
+}
+if (qcf_timer_running=true && face=-1)
+{
+    switch(special1check)
+    {
+        case 0:
+                if (keyboard_check(ord('S')))
+                {
+                    special1check+=1;
+                }
+                break;
+        case 1:
+                if (keyboard_check(ord('S')) && keyboard_check(ord('A')))
+                {
+                    special1check+=1;
+                }
+                break;
+        case 2:
+                if (keyboard_check(ord('A')) && !keyboard_check(ord('S')))
+                {
+                    special1check+=1;
+                }
+                break;
+    }
+}
+//Use this for quarter-circle backward motions (a.k.a Hurricane Kick Motions)
+if (keyboard_check(ord('S')))
+{if (special2check=0)
+ {qcb_timer=0;}}
+if (qcb_timer_running=true && face=1)
+{
+    switch(special2check)
+    {
+        case 0:
+                if (keyboard_check(ord('S')))
+                {
+                    special2check+=1;
+                }
+                break;
+        case 1:
+                if (keyboard_check(ord('S')) && keyboard_check(ord('A')))
+                {
+                    special2check+=1;
+                }
+                break;
+        case 2:
+                if (keyboard_check(ord('A')) && !keyboard_check(ord('S')))
+                {
+                    special2check+=1;
+                }
+                break;
+    }
+}
+if (qcb_timer_running=true && face=-1)
+{
+    switch(special2check)
+    {
+        case 0:
+                if (keyboard_check(ord('S')))
+                {
+                    special2check+=1;
+                }
+                break;
+        case 1:
+                if (keyboard_check(ord('S')) && keyboard_check(ord('D')))
+                {
+                    special2check+=1;
+                }
+                break;
+        case 2:
+                if (keyboard_check(ord('D'))&& !keyboard_check(ord('S')))
+                {
+                    special2check+=1;
+                }
+                break;
+    }
+}
+//Use this for forward Z motions. (a.k.a Shoryuken motions)
+if (keyboard_check(ord('D')) && face=1)
+{if (special3check=0)
+ {dpf_timer=0;}}
+if (dpf_timer_running=true && face=1)
+{
+    switch(special3check)
+    {
+        case 0:
+                if (keyboard_check(ord('D')))
+                {
+                    special3check+=1;
+                }
+                break;
+        case 1:
+                if (keyboard_check(ord('S')) && !keyboard_check(ord('D')))
+                {
+                    special3check+=1;
+                }
+                break;
+        case 2:
+                if (keyboard_check(ord('S')) && keyboard_check(ord('D')))
+                {
+                    special3check+=1;
+                }
+                break;
+    }
+}
+if (keyboard_check(ord('A')) && face=-1)
+{if (special3check=0)
+ {dpf_timer=0;}}
+if (dpf_timer_running=true && face=-1)
+{
+    switch(special3check)
+    {
+        case 0:
+                if (keyboard_check(ord('A')))
+                {
+                    special3check+=1;
+                }
+                break;
+        case 1:
+                if (keyboard_check(ord('S')) && !keyboard_check(ord('A')))
+                {
+                    special3check+=1;
+                }
+                break;
+        case 2:
+                if (keyboard_check(ord('S')) && keyboard_check(ord('A')))
+                {
+                    special3check+=1;
+                }
+                break;
+    }
+}
+//Use this for backward Z motions.
+if (keyboard_check(ord('A')) && face=1)
+{if (special4check=0)
+ {dpb_timer=0;}}
+if (dpb_timer_running=true && face=1)
+{
+    switch(special4check)
+    {
+        case 0:
+                if (keyboard_check(ord('A')))
+                {
+                    special4check+=1;
+                }
+                break;
+        case 1:
+                if (keyboard_check(ord('S')) && !keyboard_check(ord('A')))
+                {
+                    special4check+=1;
+                }
+                break;
+        case 2:
+                if (keyboard_check(ord('S')) && keyboard_check(ord('A')))
+                {
+                    special4check+=1;
+                }
+                break;
+    }
+}
+if (keyboard_check(ord('D')) && face=-1)
+{if (special4check=0)
+ {dpb_timer=0;}}
+if (dpb_timer_running=true && face=-1)
+{
+    switch(special4check)
+    {
+        case 0:
+                if (keyboard_check(ord('D')))
+                {
+                    special4check+=1;
+                }
+                break;
+        case 1:
+                if (keyboard_check(ord('S')) && !keyboard_check(ord('D')))
+                {
+                    special4check+=1;
+                }
+                break;
+        case 2:
+                if (keyboard_check(ord('S')) && keyboard_check(ord('D')))
+                {
+                    special4check+=1;
+                }
+                break;
+    }
+}
+//Use this for half-circle forward motions.
+if (keyboard_check(ord('A')) && face=1)
+{if (special5check=0)
+ {hcf_timer=0;}}
+if (hcf_timer_running=true && face=1)
+{
+    switch(special5check)
+    {
+        case 0:
+                if (keyboard_check(ord('A')))
+                {
+                    special5check+=1;
+                }
+                break;
+        case 1:
+                if (keyboard_check(ord('A')) && keyboard_check(ord('S')))
+                {
+                    special5check+=1;
+                }
+                break;
+        case 2:
+                if (keyboard_check(ord('S')) && !keyboard_check(ord('A')))
+                {
+                    special5check+=1;
+                }
+                break;
+        case 3:
+                if (keyboard_check(ord('S')) && keyboard_check(ord('D')))
+                {
+                    special5check+=1;
+                }
+                break;
+        case 4:
+                if (keyboard_check(ord('D')) && !keyboard_check(ord('S')))
+                {
+                    special5check+=1;
+                }
+                break;
+    }
+}
+if (keyboard_check(ord('D')) && face=-1)
+{if (special5check=0)
+ {hcf_timer=0;}}
+if (hcf_timer_running=true && face=-1)
+{
+    switch(special5check)
+    {
+        case 0:
+                if (keyboard_check(ord('D')))
+                {
+                    special5check+=1;
+                }
+                break;
+        case 1:
+                if (keyboard_check(ord('D')) && keyboard_check(ord('S')))
+                {
+                    special5check+=1;
+                }
+                break;
+        case 2:
+                if (keyboard_check(ord('S')) && !keyboard_check(ord('D')))
+                {
+                    special5check+=1;
+                }
+                break;
+        case 3:
+                if (keyboard_check(ord('S')) && keyboard_check(ord('A')))
+                {
+                    special5check+=1;
+                }
+                break;
+        case 4:
+                if (keyboard_check(ord('A')) && !keyboard_check(ord('S')))
+                {
+                    special5check+=1;
+                }
+                break;
+    }
+}
+//Use this for half-circle backward motions.
+if (keyboard_check(ord('A')) && face=-1)
+{if (special6check=0)
+ {hcb_timer=0;}}
+if (hcb_timer_running=true && face=-1)
+{
+    switch(special6check)
+    {
+        case 0:
+                if (keyboard_check(ord('A')))
+                {
+                    special6check+=1;
+                }
+                break;
+        case 1:
+                if (keyboard_check(ord('A')) && keyboard_check(ord('S')))
+                {
+                    special6check+=1;
+                }
+                break;
+        case 2:
+                if (keyboard_check(ord('S')) && !keyboard_check(ord('A')))
+                {
+                    special6check+=1;
+                }
+                break;
+        case 3:
+                if (keyboard_check(ord('S')) && keyboard_check(ord('D')))
+                {
+                    special6check+=1;
+                }
+                break;
+        case 4:
+                if (keyboard_check(ord('D')) && !keyboard_check(ord('S')))
+                {
+                    special6check+=1;
+                }
+                break;
+    }
+}
+if (keyboard_check(ord('D')) && face=1)
+{if (special6check=0)
+ {hcb_timer=0;}}
+if (hcb_timer_running=true && face=1)
+{
+    switch(special6check)
+    {
+        case 0:
+                if (keyboard_check(ord('D')))
+                {
+                    special6check+=1;
+                }
+                break;
+        case 1:
+                if (keyboard_check(ord('D')) && keyboard_check(ord('S')))
+                {
+                    special6check+=1;
+                }
+                break;
+        case 2:
+                if (keyboard_check(ord('S')) && !keyboard_check(ord('D')))
+                {
+                    special6check+=1;
+                }
+                break;
+        case 3:
+                if (keyboard_check(ord('S')) && keyboard_check(ord('A')))
+                {
+                    special6check+=1;
+                }
+                break;
+        case 4:
+                if (keyboard_check(ord('A')) && !keyboard_check(ord('S')))
+                {
+                    special6check+=1;
+                }
+                break;
+    }
+}
