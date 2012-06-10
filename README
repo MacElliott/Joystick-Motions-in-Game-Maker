@@ -1,1 +1,8 @@
-I am working on updating this file with instructions on how to use the code in the motioncode.txt file.
+In order to use this code, first create a new script in game maker. Take the motioncode.txt file, and copy it to your computer.
+Then, select the "Load the code from a text file" option under Script Properties to load the script into Game Maker. 
+
+Alternatively, simply copy and paste from the motioncode.txt file into the script you created in game maker.
+
+Keep in mind that this code is only for one player's controls, which uses the AWSD keys for movement. You will need to duplicate the script and change the keys if you want the game to support multiple players.
+
+I am working on updating this file with more detailed instructions on how to use the code in the motioncode.txt file.
